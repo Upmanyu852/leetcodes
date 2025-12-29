@@ -5,8 +5,8 @@ class Solution {
         int[] count = new int[26];
 
         for (int i = 0; i < s.length(); i++) {
-            count[s.charAt(i) - 'a']++;
-            count[t.charAt(i) - 'a']--;
+            count[s.charAt(i) - 97]++;
+            count[t.charAt(i) - 97]--;
         }
 
         for (int c : count) {
