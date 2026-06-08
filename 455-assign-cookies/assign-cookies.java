@@ -1,24 +1,16 @@
 import java.util.Arrays;
-
 class Solution {
     public int findContentChildren(int[] g, int[] s) {
         Arrays.sort(g);
         Arrays.sort(s);
-        
-        int childPointer = 0;
-        int cookiePointer = 0;
-        
-        // Loop until you run out of children OR cookies
-        while (childPointer < g.length && cookiePointer < s.length) {
-            // If the cookie satisfies the child, move to the next child
-            if (s[cookiePointer] >= g[childPointer]) {
-                childPointer++;
-            }
-            // Always move to the next cookie
-            cookiePointer++;
+        int n = g.length;
+        int m = s.length;
+        int i = 0;
+        int j = 0;
+        while(i<n && j<m){
+            if(g[i]<=s[j]) i++;
+            j++;
         }
-        
-        // The number of content children is represented by the childPointer index
-        return childPointer;
+        return i;
     }
 }
