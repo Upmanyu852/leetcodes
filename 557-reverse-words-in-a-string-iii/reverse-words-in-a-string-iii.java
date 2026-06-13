@@ -1,5 +1,5 @@
 // brute force approch
-class Solution {
+/*class Solution {
 
     public String reverseString(String str) {
         return new StringBuilder(str).reverse().toString();
@@ -26,5 +26,43 @@ class Solution {
         }
 
         return ans;
+    }
+}*/
+class Solution {
+
+    public String reverseWords(String s) {
+
+        char[] arr = s.toCharArray();
+
+        int left = 0;
+        int right = 0;
+
+        while (right < arr.length) {
+
+            if (arr[right] == ' ') {
+                reverse(arr, left, right - 1);
+                left = right + 1;
+            }
+
+            right++;
+        }
+
+        // Reverse the last word
+        reverse(arr, left, right - 1);
+
+        return new String(arr);
+    }
+
+    private void reverse(char[] arr, int left, int right) {
+
+        while (left < right) {
+
+            char temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+
+            left++;
+            right--;
+        }
     }
 }
