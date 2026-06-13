@@ -1,3 +1,4 @@
+// brute force approch
 class Solution {
 
     public String reverseString(String str) {
