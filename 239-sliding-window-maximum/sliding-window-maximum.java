@@ -1,0 +1,46 @@
+import java.util.*;
+
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        if (nums == null || nums.length == 0 || k == 0) {
+            return new int[0];
+        }
+
+        int n = nums.length;
+        int[] result = new int[n - k + 1];
+        Deque<Integer> deque = new LinkedList<>();
+
+        // Process the first window
+        for (int i = 0; i < k; i++) {
+            while (!deque.isEmpty() &&
+                   nums[deque.peekLast()] <= nums[i]) {
+                deque.pollLast();
+            }
+            deque.offerLast(i);
+        }
+
+        result[0] = nums[deque.peekFirst()];
+
+        // Process the remaining windows
+        for (int i = k; i < n; i++) {
+
+            // Remove indices that are out of this window
+            if (deque.peekFirst() <= i - k) {
+                deque.pollFirst();
+            }
+
+            // Remove smaller elements from the back
+            while (!deque.isEmpty() &&
+                   nums[deque.peekLast()] <= nums[i]) {
+                deque.pollLast();
+            }
+
+            deque.offerLast(i);
+
+            // Front of deque is the maximum
+            result[i - k + 1] = nums[deque.peekFirst()];
+        }
+
+        return result;
+    }
+}
