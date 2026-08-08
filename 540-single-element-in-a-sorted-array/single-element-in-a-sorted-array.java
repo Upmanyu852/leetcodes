@@ -1,6 +1,6 @@
 class Solution {
     public int singleNonDuplicate(int[] nums) {
-        int n = nums.length; // fixed: .length for arrays, not .size()
+        int n = nums.length; 
         int st = 0;
         int end = n - 1;
 
