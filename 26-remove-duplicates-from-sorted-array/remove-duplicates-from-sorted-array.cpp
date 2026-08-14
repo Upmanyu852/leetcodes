@@ -19,7 +19,7 @@ public:
             st.pop();
         }
         reverse(arr.begin(),arr.end());
-        nums.empty();
+        nums.clear();
         nums = arr;
         return count;
     }
