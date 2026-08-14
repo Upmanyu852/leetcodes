@@ -19,7 +19,8 @@ public:
                            (s[i] == '}' && st.top() == '{') ||
                            (s[i] == ']' && st.top() == '[')) {
                     st.pop();
-                } else {
+                }
+                 else {
                     return false;
                 }
             }
