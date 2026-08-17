@@ -15,7 +15,6 @@ public:
             return 1;
         }
         vector<int> dp(n + 1, -1);
-        helper(n, dp);
-        return dp[n];
+        return helper(n, dp);
     }
-};
+}; 
